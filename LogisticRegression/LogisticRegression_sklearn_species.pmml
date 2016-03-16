@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_2" version="4.2">
+  <Header>
+    <Application name="JPMML-SkLearn" version="1.0-SNAPSHOT"/>
+    <Timestamp>2016-03-15T18:01:16Z</Timestamp>
+  </Header>
+  <DataDictionary>
+    <DataField name="y" optype="categorical" dataType="string">
+      <Value value="0"/>
+      <Value value="1"/>
+    </DataField>
+    <DataField name="x1" optype="continuous" dataType="double"/>
+    <DataField name="x2" optype="continuous" dataType="double"/>
+  </DataDictionary>
+  <TransformationDictionary>
+    <DefineFunction name="logit" optype="continuous" dataType="double">
+      <ParameterField name="value" optype="continuous" dataType="double"/>
+      <Apply function="/">
+	<Constant dataType="double">1</Constant>
+	<Apply function="+">
+	  <Constant dataType="double">1</Constant>
+	  <Apply function="exp">
+	    <Apply function="*">
+	      <Constant dataType="double">-1</Constant>
+	      <FieldRef field="value"/>
+	    </Apply>
+	  </Apply>
+	</Apply>
+      </Apply>
+    </DefineFunction>
+  </TransformationDictionary>
+  <MiningModel functionName="classification">
+    <MiningSchema>
+      <MiningField name="y" usageType="target"/>
+      <MiningField name="x1"/>
+      <MiningField name="x2"/>
+    </MiningSchema>
+    <Output>
+      <OutputField name="probability_0" feature="probability" value="0"/>
+      <OutputField name="probability_1" feature="probability" value="1"/>
+    </Output>
+    <Segmentation multipleModelMethod="modelChain">
+      <Segment id="1">
+	<True/>
+	<RegressionModel functionName="regression">
+	  <MiningSchema>
+	    <MiningField name="x1"/>
+	    <MiningField name="x2"/>
+	  </MiningSchema>
+	  <Output>
+	    <OutputField name="decisionFunction_1" feature="predictedValue"/>
+	    <OutputField name="logitDecisionFunction_1" optype="continuous" dataType="double" feature="transformedValue">
+	      <Apply function="logit">
+		<FieldRef field="decisionFunction_1"/>
+	      </Apply>
+	    </OutputField>
+	  </Output>
+	  <RegressionTable intercept="-0.5494099850732638">
+	    <NumericPredictor name="x1" coefficient="-1.4094354772882118"/>
+	    <NumericPredictor name="x2" coefficient="2.987125448934279"/>
+	  </RegressionTable>
+	</RegressionModel>
+      </Segment>
+      <Segment id="2">
+	<True/>
+	<RegressionModel functionName="regression">
+	  <MiningSchema>
+	    <MiningField name="logitDecisionFunction_1"/>
+	  </MiningSchema>
+	  <Output>
+	    <OutputField name="logitDecisionFunction_0" feature="predictedValue"/>
+	  </Output>
+	  <RegressionTable intercept="1.0">
+	    <NumericPredictor name="logitDecisionFunction_1" coefficient="-1.0"/>
+	  </RegressionTable>
+	</RegressionModel>
+      </Segment>
+      <Segment id="3">
+	<True/>
+	<RegressionModel functionName="classification">
+	  <MiningSchema>
+	    <MiningField name="y" usageType="target"/>
+	    <MiningField name="logitDecisionFunction_1"/>
+	    <MiningField name="logitDecisionFunction_0"/>
+	  </MiningSchema>
+	  <RegressionTable intercept="0.0" targetCategory="1">
+	    <NumericPredictor name="logitDecisionFunction_1" coefficient="1.0"/>
+	  </RegressionTable>
+	  <RegressionTable intercept="0.0" targetCategory="0">
+	    <NumericPredictor name="logitDecisionFunction_0" coefficient="1.0"/>
+	  </RegressionTable>
+	</RegressionModel>
+      </Segment>
+    </Segmentation>
+  </MiningModel>
+</PMML>

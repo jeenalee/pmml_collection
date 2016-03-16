@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_2" version="4.2">
+  <Header>
+    <Application name="JPMML-SkLearn" version="1.0-SNAPSHOT"/>
+    <Timestamp>2016-03-16T21:01:20Z</Timestamp>
+  </Header>
+  <DataDictionary>
+    <DataField name="y" optype="continuous" dataType="double"/>
+    <DataField name="x1" optype="continuous" dataType="double"/>
+    <DataField name="x2" optype="continuous" dataType="double"/>
+    <DataField name="x3" optype="continuous" dataType="double"/>
+  </DataDictionary>
+  <RegressionModel functionName="regression">
+    <MiningSchema>
+      <MiningField name="y" usageType="target"/>
+      <MiningField name="x1"/>
+      <MiningField name="x2"/>
+      <MiningField name="x3"/>
+    </MiningSchema>
+    <RegressionTable intercept="1.8450608032166134">
+      <NumericPredictor name="x1" coefficient="0.6548642427853526"/>
+      <NumericPredictor name="x2" coefficient="0.7110629145526257"/>
+      <NumericPredictor name="x3" coefficient="-0.5625678605519047"/>
+    </RegressionTable>
+  </RegressionModel>
+</PMML>
