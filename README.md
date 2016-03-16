@@ -12,7 +12,7 @@ R: `lm {stats}`
 sklearn: `sklearn.linear_model.LinearRegression()`
 
 ## Logistic Regression
-x = Sepal.Length, Petal.Length
+x = Sepal.Length, Sepal.Width
 
 y = Species (only 2 states; 'setosa' and 'versicolor')
 
@@ -20,3 +20,13 @@ y = Species (only 2 states; 'setosa' and 'versicolor')
 R: `glm {stats}` with `family='binomial'`
 
 sklearn: `sklearn.linear_model.LogisticRegression()`
+
+## Random Forest
+* Also includes models trained on only 10 samples to make simpler models.
+x = Sepal.Length, Sepal.Width
+
+y = Species
+
+R: `randomForest {randomForest}` with ntree=2
+
+sklearn: `sklearn.ensemble.RandomForestClassifer(n_estimators = 2)`

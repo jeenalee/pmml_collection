@@ -1,20 +1,19 @@
-<?xml version="1.0"?>
 <PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_2 http://www.dmg.org/v4-2/pmml-4-2.xsd">
  <Header copyright="Copyright (c) 2016 Jeena" description="Generalized Linear Regression Model">
   <Extension name="user" value="Jeena" extender="Rattle/PMML"/>
   <Application name="Rattle/PMML" version="1.4"/>
-  <Timestamp>2016-03-15 09:23:55</Timestamp>
+  <Timestamp>2016-03-16 14:41:09</Timestamp>
  </Header>
  <DataDictionary numberOfFields="3">
   <DataField name="Species.binomial" optype="continuous" dataType="double"/>
   <DataField name="Sepal.Length" optype="continuous" dataType="double"/>
-  <DataField name="Petal.Length" optype="continuous" dataType="double"/>
+  <DataField name="Sepal.Width" optype="continuous" dataType="double"/>
  </DataDictionary>
  <GeneralRegressionModel modelName="General_Regression_Model" modelType="generalizedLinear" functionName="regression" algorithmName="glm" distribution="binomial" linkFunction="logit">
   <MiningSchema>
    <MiningField name="Species.binomial" usageType="predicted"/>
    <MiningField name="Sepal.Length" usageType="active"/>
-   <MiningField name="Petal.Length" usageType="active"/>
+   <MiningField name="Sepal.Width" usageType="active"/>
   </MiningSchema>
   <Output>
    <OutputField name="Predicted_Species.binomial" feature="predictedValue"/>
@@ -22,21 +21,21 @@
   <ParameterList>
    <Parameter name="p0" label="(Intercept)"/>
    <Parameter name="p1" label="Sepal.Length"/>
-   <Parameter name="p2" label="Petal.Length"/>
+   <Parameter name="p2" label="Sepal.Width"/>
   </ParameterList>
   <FactorList/>
   <CovariateList>
    <Predictor name="Sepal.Length"/>
-   <Predictor name="Petal.Length"/>
+   <Predictor name="Sepal.Width"/>
   </CovariateList>
   <PPMatrix>
    <PPCell value="1" predictorName="Sepal.Length" parameterName="p1"/>
-   <PPCell value="1" predictorName="Petal.Length" parameterName="p2"/>
+   <PPCell value="1" predictorName="Sepal.Width" parameterName="p2"/>
   </PPMatrix>
   <ParamMatrix>
-   <PCell parameterName="p0" df="1" beta="65.8426649351915"/>
-   <PCell parameterName="p1" df="1" beta="-37.5614112108421"/>
-   <PCell parameterName="p2" df="1" beta="49.0461586702172"/>
+   <PCell parameterName="p0" df="1" beta="-360.609955881755"/>
+   <PCell parameterName="p1" df="1" beta="131.794113847972"/>
+   <PCell parameterName="p2" df="1" beta="-110.125750690828"/>
   </ParamMatrix>
  </GeneralRegressionModel>
 </PMML>

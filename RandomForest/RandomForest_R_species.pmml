@@ -1,0 +1,417 @@
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_2 http://www.dmg.org/v4-2/pmml-4-2.xsd">
+ <Header copyright="Copyright (c) 2016 Jeena" description="Random Forest Tree Model">
+  <Extension name="user" value="Jeena" extender="Rattle/PMML"/>
+  <Application name="Rattle/PMML" version="1.4"/>
+  <Timestamp>2016-03-16 15:07:15</Timestamp>
+ </Header>
+ <DataDictionary numberOfFields="3">
+  <DataField name="iris_y_rfc" optype="categorical" dataType="string">
+   <Value value="setosa"/>
+   <Value value="versicolor"/>
+   <Value value="virginica"/>
+  </DataField>
+  <DataField name="Sepal.Length" optype="continuous" dataType="double"/>
+  <DataField name="Sepal.Width" optype="continuous" dataType="double"/>
+ </DataDictionary>
+ <MiningModel modelName="randomForest_Model" algorithmName="randomForest" functionName="classification">
+  <MiningSchema>
+   <MiningField name="iris_y_rfc" usageType="predicted"/>
+   <MiningField name="Sepal.Length" usageType="active"/>
+   <MiningField name="Sepal.Width" usageType="active"/>
+  </MiningSchema>
+  <Output>
+   <OutputField name="Predicted_iris_y_rfc" feature="predictedValue"/>
+   <OutputField name="Probability_setosa" optype="continuous" dataType="double" feature="probability" value="setosa"/>
+   <OutputField name="Probability_versicolor" optype="continuous" dataType="double" feature="probability" value="versicolor"/>
+   <OutputField name="Probability_virginica" optype="continuous" dataType="double" feature="probability" value="virginica"/>
+  </Output>
+  <Segmentation multipleModelMethod="majorityVote">
+   <Segment id="1">
+    <True/>
+    <TreeModel modelName="randomForest_Model" functionName="classification" algorithmName="randomForest" splitCharacteristic="binarySplit">
+     <MiningSchema>
+      <MiningField name="iris_y_rfc" usageType="predicted"/>
+      <MiningField name="Sepal.Length" usageType="active"/>
+      <MiningField name="Sepal.Width" usageType="active"/>
+     </MiningSchema>
+     <Node id="1">
+      <True/>
+      <Node id="2">
+       <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.45000000000000018"/>
+       <Node id="4">
+        <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.15000000000000036"/>
+        <Node id="8" score="setosa">
+         <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="4.84999999999999964"/>
+        </Node>
+        <Node id="9">
+         <SimplePredicate field="Sepal.Length" operator="greaterThan" value="4.84999999999999964"/>
+         <Node id="16" score="setosa">
+          <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="4.95000000000000018"/>
+         </Node>
+         <Node id="17">
+          <SimplePredicate field="Sepal.Length" operator="greaterThan" value="4.95000000000000018"/>
+          <Node id="24" score="versicolor">
+           <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.75"/>
+          </Node>
+          <Node id="25" score="setosa">
+           <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.75"/>
+          </Node>
+         </Node>
+        </Node>
+       </Node>
+       <Node id="5">
+        <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.15000000000000036"/>
+        <Node id="10" score="versicolor">
+         <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.04999999999999982"/>
+        </Node>
+        <Node id="11" score="setosa">
+         <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.04999999999999982"/>
+        </Node>
+       </Node>
+      </Node>
+      <Node id="3">
+       <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.45000000000000018"/>
+       <Node id="6">
+        <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.95000000000000018"/>
+        <Node id="12">
+         <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.25"/>
+         <Node id="18" score="versicolor">
+          <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.65000000000000036"/>
+         </Node>
+         <Node id="19">
+          <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.65000000000000036"/>
+          <Node id="26" score="virginica">
+           <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.65000000000000036"/>
+          </Node>
+          <Node id="27">
+           <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.65000000000000036"/>
+           <Node id="32">
+            <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.90000000000000036"/>
+            <Node id="40" score="versicolor">
+             <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.75"/>
+            </Node>
+            <Node id="41" score="versicolor">
+             <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.75"/>
+            </Node>
+           </Node>
+           <Node id="33" score="versicolor">
+            <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.90000000000000036"/>
+           </Node>
+          </Node>
+         </Node>
+        </Node>
+        <Node id="13">
+         <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.25"/>
+         <Node id="20">
+          <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="7.04999999999999982"/>
+          <Node id="28">
+           <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.75"/>
+           <Node id="34">
+            <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.60000000000000009"/>
+            <Node id="42" score="versicolor">
+             <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.5"/>
+            </Node>
+            <Node id="43" score="virginica">
+             <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.5"/>
+            </Node>
+           </Node>
+           <Node id="35" score="virginica">
+            <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.60000000000000009"/>
+           </Node>
+          </Node>
+          <Node id="29">
+           <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.75"/>
+           <Node id="36" score="virginica">
+            <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.34999999999999964"/>
+           </Node>
+           <Node id="37" score="versicolor">
+            <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.34999999999999964"/>
+           </Node>
+          </Node>
+         </Node>
+         <Node id="21" score="virginica">
+          <SimplePredicate field="Sepal.Length" operator="greaterThan" value="7.04999999999999982"/>
+         </Node>
+        </Node>
+       </Node>
+       <Node id="7">
+        <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.95000000000000018"/>
+        <Node id="14">
+         <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.89999999999999991"/>
+         <Node id="22" score="versicolor">
+          <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.04999999999999982"/>
+         </Node>
+         <Node id="23">
+          <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.04999999999999982"/>
+          <Node id="30">
+           <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="7.04999999999999982"/>
+           <Node id="38">
+            <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.25"/>
+            <Node id="44">
+             <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.95000000000000018"/>
+             <Node id="48">
+              <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.59999999999999964"/>
+              <Node id="52">
+               <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.45000000000000018"/>
+               <Node id="56" score="virginica">
+                <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.25"/>
+               </Node>
+               <Node id="57">
+                <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.25"/>
+                <Node id="62" score="virginica">
+                 <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.15000000000000036"/>
+                </Node>
+                <Node id="63" score="versicolor">
+                 <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.15000000000000036"/>
+                </Node>
+               </Node>
+              </Node>
+              <Node id="53" score="virginica">
+               <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.45000000000000018"/>
+              </Node>
+             </Node>
+             <Node id="49">
+              <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.59999999999999964"/>
+              <Node id="54">
+               <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.75"/>
+               <Node id="58" score="virginica">
+                <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.04999999999999982"/>
+               </Node>
+               <Node id="59" score="versicolor">
+                <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.04999999999999982"/>
+               </Node>
+              </Node>
+              <Node id="55">
+               <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.75"/>
+               <Node id="60" score="virginica">
+                <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.84999999999999964"/>
+               </Node>
+               <Node id="61" score="virginica">
+                <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.84999999999999964"/>
+               </Node>
+              </Node>
+             </Node>
+            </Node>
+            <Node id="45" score="versicolor">
+             <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.95000000000000018"/>
+            </Node>
+           </Node>
+           <Node id="39">
+            <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.25"/>
+            <Node id="46">
+             <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.5"/>
+             <Node id="50" score="virginica">
+              <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.34999999999999964"/>
+             </Node>
+             <Node id="51" score="virginica">
+              <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.34999999999999964"/>
+             </Node>
+            </Node>
+            <Node id="47" score="virginica">
+             <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.5"/>
+            </Node>
+           </Node>
+          </Node>
+          <Node id="31" score="virginica">
+           <SimplePredicate field="Sepal.Length" operator="greaterThan" value="7.04999999999999982"/>
+          </Node>
+         </Node>
+        </Node>
+        <Node id="15" score="setosa">
+         <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.89999999999999991"/>
+        </Node>
+       </Node>
+      </Node>
+     </Node>
+    </TreeModel>
+   </Segment>
+   <Segment id="2">
+    <True/>
+    <TreeModel modelName="randomForest_Model" functionName="classification" algorithmName="randomForest" splitCharacteristic="binarySplit">
+     <MiningSchema>
+      <MiningField name="iris_y_rfc" usageType="predicted"/>
+      <MiningField name="Sepal.Length" usageType="active"/>
+      <MiningField name="Sepal.Width" usageType="active"/>
+     </MiningSchema>
+     <Node id="1">
+      <True/>
+      <Node id="2">
+       <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.54999999999999982"/>
+       <Node id="4">
+        <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.45000000000000018"/>
+        <Node id="8">
+         <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.75"/>
+         <Node id="16" score="versicolor">
+          <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.45000000000000018"/>
+         </Node>
+         <Node id="17">
+          <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.45000000000000018"/>
+          <Node id="22" score="virginica">
+           <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5"/>
+          </Node>
+          <Node id="23" score="versicolor">
+           <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5"/>
+          </Node>
+         </Node>
+        </Node>
+        <Node id="9" score="setosa">
+         <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.75"/>
+        </Node>
+       </Node>
+       <Node id="5">
+        <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.45000000000000018"/>
+        <Node id="10" score="versicolor">
+         <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3"/>
+        </Node>
+        <Node id="11" score="setosa">
+         <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3"/>
+        </Node>
+       </Node>
+      </Node>
+      <Node id="3">
+       <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.54999999999999982"/>
+       <Node id="6">
+        <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.25"/>
+        <Node id="12">
+         <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.70000000000000018"/>
+         <Node id="18">
+          <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.84999999999999964"/>
+          <Node id="24">
+           <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.54999999999999982"/>
+           <Node id="30" score="versicolor">
+            <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.35000000000000009"/>
+           </Node>
+           <Node id="31" score="versicolor">
+            <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.35000000000000009"/>
+           </Node>
+          </Node>
+          <Node id="25">
+           <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.54999999999999982"/>
+           <Node id="32" score="virginica">
+            <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.65000000000000036"/>
+           </Node>
+           <Node id="33">
+            <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.65000000000000036"/>
+            <Node id="40" score="virginica">
+             <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.65000000000000036"/>
+            </Node>
+            <Node id="41">
+             <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.65000000000000036"/>
+             <Node id="48">
+              <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.75"/>
+              <Node id="54" score="virginica">
+               <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.90000000000000036"/>
+              </Node>
+              <Node id="55" score="versicolor">
+               <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.90000000000000036"/>
+              </Node>
+             </Node>
+             <Node id="49">
+              <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.75"/>
+              <Node id="56" score="versicolor">
+               <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.15000000000000036"/>
+              </Node>
+              <Node id="57" score="virginica">
+               <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.15000000000000036"/>
+              </Node>
+             </Node>
+            </Node>
+           </Node>
+          </Node>
+         </Node>
+         <Node id="19">
+          <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.84999999999999964"/>
+          <Node id="26" score="versicolor">
+           <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.95000000000000018"/>
+          </Node>
+          <Node id="27">
+           <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.95000000000000018"/>
+           <Node id="34" score="versicolor">
+            <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="5.95000000000000018"/>
+           </Node>
+           <Node id="35">
+            <SimplePredicate field="Sepal.Length" operator="greaterThan" value="5.95000000000000018"/>
+            <Node id="42" score="virginica">
+             <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.20000000000000018"/>
+            </Node>
+            <Node id="43" score="versicolor">
+             <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.20000000000000018"/>
+            </Node>
+           </Node>
+          </Node>
+         </Node>
+        </Node>
+        <Node id="13" score="setosa">
+         <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.70000000000000018"/>
+        </Node>
+       </Node>
+       <Node id="7">
+        <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.25"/>
+        <Node id="14" score="versicolor">
+         <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.54999999999999982"/>
+        </Node>
+        <Node id="15">
+         <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.54999999999999982"/>
+         <Node id="20">
+          <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.84999999999999964"/>
+          <Node id="28">
+           <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.34999999999999964"/>
+           <Node id="36" score="virginica">
+            <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.04999999999999982"/>
+           </Node>
+           <Node id="37" score="versicolor">
+            <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.04999999999999982"/>
+           </Node>
+          </Node>
+          <Node id="29">
+           <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.34999999999999964"/>
+           <Node id="38">
+            <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.45000000000000018"/>
+            <Node id="44" score="virginica">
+             <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="2.84999999999999964"/>
+            </Node>
+            <Node id="45" score="versicolor">
+             <SimplePredicate field="Sepal.Width" operator="greaterThan" value="2.84999999999999964"/>
+            </Node>
+           </Node>
+           <Node id="39">
+            <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.45000000000000018"/>
+            <Node id="46">
+             <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.75"/>
+             <Node id="50">
+              <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3.15000000000000036"/>
+              <Node id="58" score="versicolor">
+               <SimplePredicate field="Sepal.Length" operator="lessOrEqual" value="6.59999999999999964"/>
+              </Node>
+              <Node id="59" score="virginica">
+               <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.59999999999999964"/>
+              </Node>
+             </Node>
+             <Node id="51" score="virginica">
+              <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3.15000000000000036"/>
+             </Node>
+            </Node>
+            <Node id="47">
+             <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.75"/>
+             <Node id="52" score="versicolor">
+              <SimplePredicate field="Sepal.Width" operator="lessOrEqual" value="3"/>
+             </Node>
+             <Node id="53" score="virginica">
+              <SimplePredicate field="Sepal.Width" operator="greaterThan" value="3"/>
+             </Node>
+            </Node>
+           </Node>
+          </Node>
+         </Node>
+         <Node id="21" score="virginica">
+          <SimplePredicate field="Sepal.Length" operator="greaterThan" value="6.84999999999999964"/>
+         </Node>
+        </Node>
+       </Node>
+      </Node>
+     </Node>
+    </TreeModel>
+   </Segment>
+  </Segmentation>
+ </MiningModel>
+</PMML>

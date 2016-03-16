@@ -2,7 +2,7 @@
 <PMML xmlns="http://www.dmg.org/PMML-4_2" version="4.2">
   <Header>
     <Application name="JPMML-SkLearn" version="1.0-SNAPSHOT"/>
-    <Timestamp>2016-03-15T18:01:16Z</Timestamp>
+    <Timestamp>2016-03-16T21:44:38Z</Timestamp>
   </Header>
   <DataDictionary>
     <DataField name="y" optype="categorical" dataType="string">
@@ -55,9 +55,9 @@
 	      </Apply>
 	    </OutputField>
 	  </Output>
-	  <RegressionTable intercept="-0.5494099850732638">
-	    <NumericPredictor name="x1" coefficient="-1.4094354772882118"/>
-	    <NumericPredictor name="x2" coefficient="2.987125448934279"/>
+	  <RegressionTable intercept="-0.5990112386534245">
+	    <NumericPredictor name="x1" coefficient="2.2165737556011873"/>
+	    <NumericPredictor name="x2" coefficient="-3.691523370658907"/>
 	  </RegressionTable>
 	</RegressionModel>
       </Segment>
