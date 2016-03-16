@@ -22,7 +22,8 @@ R: `glm {stats}` with `family='binomial'`
 sklearn: `sklearn.linear_model.LogisticRegression()`
 
 ## Random Forest
-* Also includes models trained on only 10 samples to make simpler models.
+Also includes models trained on only 10 samples to make simpler models.
+
 x = Sepal.Length, Sepal.Width
 
 y = Species
