@@ -28,6 +28,6 @@ x = Sepal.Length, Sepal.Width
 
 y = Species
 
-R: `randomForest {randomForest}` with ntree=2
+R: `randomForest {randomForest}` with `ntree=2`
 
 sklearn: `sklearn.ensemble.RandomForestClassifer(n_estimators = 2)`
