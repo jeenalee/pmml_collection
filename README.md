@@ -31,3 +31,5 @@ y = Species
 R: `randomForest {randomForest}` with `ntree=2`
 
 sklearn: `sklearn.ensemble.RandomForestClassifer(n_estimators = 2)`
+
+R creates the trees in breadth-first manner, i.e. the node ids will be continuous in a breadth-first traversal. Meanwhile, sklearn outputs the trees in depth-first manner.
