@@ -21,6 +21,8 @@ R: `glm {stats}` with `family='binomial'`
 
 sklearn: `sklearn.linear_model.LogisticRegression()`
 
+R creates a model for each categorical state. For example, if there were two possible states in the data (A or B), R would create two models: one that would predict the likelihood of A, and another for likelihood of B. In sklearn, the decision function calculates the likelihood of state A (probability is closer to 1) or state B (probability is closer to 0).
+
 ## Random Forest
 Also includes models trained on only 10 samples to make simpler models.
 
